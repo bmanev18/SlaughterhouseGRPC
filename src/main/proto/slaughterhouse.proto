@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_package = "com.protobuf";
+
+service Slaughterhouse { //That is the API
+  rpc GetProductsByAnimal(ProductListRequest) returns (ProductListResponse);
+  rpc GetAnimalsByTray(AnimalListRequest) returns (AnimalListResponse);
+}
+
+message Animal {
+  string registrationDate = 1;
+  string registration_number = 2;
+  double weight = 3;
+  string origin = 4;
+}
+
+message AnimalPart {
+  string registration_number = 1;
+  double weight = 2;
+}
+
+message Tray {
+  int32 id = 1;
+  repeated AnimalPart parts = 2;
+}
+
+message Product {
+  int32 id = 1;
+  repeated Tray trays = 2;
+}
+
+message ProductDto{
+  int32 id = 1;
+}
+
+message ProductListRequest {
+  string animal_registration_number = 1;
+}
+
+message ProductListResponse {
+  repeated ProductDto products = 1;
+}
+
+message AnimalListRequest {
+  string product_id = 1;
+}
+
+message AnimalListResponse {
+  repeated int32 regNum = 1;
+}
