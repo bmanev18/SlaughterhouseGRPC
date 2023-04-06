@@ -4,7 +4,6 @@ import com.protobuf.SlaughterhouseOuterClass;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 
 public interface DAO {
  void createAnimal(LocalDate date, double weight, String origin) throws SQLException;
@@ -18,7 +17,7 @@ public interface DAO {
 
  void createProductContains(int product_id, int tray_id) throws SQLException;
 
-List<Integer> getAllRegNumber(int prod_id) throws SQLException;
+SlaughterhouseOuterClass.AnimalListResponse getAllRegNumber(int prod_id) throws SQLException;
 
 SlaughterhouseOuterClass.ProductListResponse getAllProducts(int animal_id) throws SQLException;
 }

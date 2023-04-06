@@ -95,8 +95,8 @@ public class DAOImpl implements DAO {
     }
 
     @Override
-    public List<Integer> getAllRegNumber(int prod_id) throws SQLException {
-        List<Integer> result;
+    public SlaughterhouseOuterClass.AnimalListResponse getAllRegNumber(int prod_id) throws SQLException {
+        SlaughterhouseOuterClass.AnimalListResponse response;
         try (Connection connection = getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT animal_id " +
                     "FROM animal_part ap, tray t, tray_contains tc, " +
@@ -110,13 +110,14 @@ public class DAOImpl implements DAO {
             ResultSet resultSet = statement.executeQuery();
             connection.close();
 
-            result = new ArrayList<>();
-            if (resultSet.next()) {
-                result.add(resultSet.getInt("animal_id"));
+            SlaughterhouseOuterClass.AnimalListResponse.Builder builder = SlaughterhouseOuterClass.AnimalListResponse.newBuilder();
+            while (resultSet.next()) {
+                builder.addRegNum(resultSet.getInt("animal_id"));
             }
+            response = builder.setCode(200).build();
             statement.close();
         }
-        return result;
+        return response;
     }
 
     @Override
@@ -138,11 +139,12 @@ public class DAOImpl implements DAO {
             SlaughterhouseOuterClass.ProductListResponse.Builder builder = SlaughterhouseOuterClass.ProductListResponse.newBuilder();
             while (resultSet.next()) {
                 int id = resultSet.getInt("product_id");
-                builder.addProducts(new SlaughterhouseOuterClass.ProductDto.Builder().setId(id).build());
+                builder.addProducts(SlaughterhouseOuterClass.ProductDto.newBuilder()
+                        .setId(id)
+                        .build());
             }
 
-
-            response = builder.build();
+            response = builder.setCode(200).build();
             statement.close();
         }
         return response;

@@ -3350,7 +3350,7 @@ public final class SlaughterhouseOuterClass {
     private ProductDto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    public ProductDto() {
+    private ProductDto() {
     }
 
     @java.lang.Override
@@ -3609,7 +3609,7 @@ public final class SlaughterhouseOuterClass {
       }
 
       // Construct using com.protobuf.SlaughterhouseOuterClass.ProductDto.newBuilder()
-      public Builder() {
+      private Builder() {
         maybeForceBuilderInitialization();
       }
 
@@ -3823,16 +3823,10 @@ public final class SlaughterhouseOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string animal_registration_number = 1;</code>
+     * <code>int32 animal_registration_number = 1;</code>
      * @return The animalRegistrationNumber.
      */
-    java.lang.String getAnimalRegistrationNumber();
-    /**
-     * <code>string animal_registration_number = 1;</code>
-     * @return The bytes for animalRegistrationNumber.
-     */
-    com.google.protobuf.ByteString
-        getAnimalRegistrationNumberBytes();
+    int getAnimalRegistrationNumber();
   }
   /**
    * Protobuf type {@code ProductListRequest}
@@ -3847,7 +3841,6 @@ public final class SlaughterhouseOuterClass {
       super(builder);
     }
     private ProductListRequest() {
-      animalRegistrationNumber_ = "";
     }
 
     @java.lang.Override
@@ -3880,10 +3873,9 @@ public final class SlaughterhouseOuterClass {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              animalRegistrationNumber_ = s;
+              animalRegistrationNumber_ = input.readInt32();
               break;
             }
             default: {
@@ -3921,41 +3913,14 @@ public final class SlaughterhouseOuterClass {
     }
 
     public static final int ANIMAL_REGISTRATION_NUMBER_FIELD_NUMBER = 1;
-    private volatile java.lang.Object animalRegistrationNumber_;
+    private int animalRegistrationNumber_;
     /**
-     * <code>string animal_registration_number = 1;</code>
+     * <code>int32 animal_registration_number = 1;</code>
      * @return The animalRegistrationNumber.
      */
     @java.lang.Override
-    public java.lang.String getAnimalRegistrationNumber() {
-      java.lang.Object ref = animalRegistrationNumber_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        animalRegistrationNumber_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string animal_registration_number = 1;</code>
-     * @return The bytes for animalRegistrationNumber.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getAnimalRegistrationNumberBytes() {
-      java.lang.Object ref = animalRegistrationNumber_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        animalRegistrationNumber_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getAnimalRegistrationNumber() {
+      return animalRegistrationNumber_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3972,8 +3937,8 @@ public final class SlaughterhouseOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(animalRegistrationNumber_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, animalRegistrationNumber_);
+      if (animalRegistrationNumber_ != 0) {
+        output.writeInt32(1, animalRegistrationNumber_);
       }
       unknownFields.writeTo(output);
     }
@@ -3984,8 +3949,9 @@ public final class SlaughterhouseOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(animalRegistrationNumber_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, animalRegistrationNumber_);
+      if (animalRegistrationNumber_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, animalRegistrationNumber_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4002,8 +3968,8 @@ public final class SlaughterhouseOuterClass {
       }
       com.protobuf.SlaughterhouseOuterClass.ProductListRequest other = (com.protobuf.SlaughterhouseOuterClass.ProductListRequest) obj;
 
-      if (!getAnimalRegistrationNumber()
-          .equals(other.getAnimalRegistrationNumber())) return false;
+      if (getAnimalRegistrationNumber()
+          != other.getAnimalRegistrationNumber()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4016,7 +3982,7 @@ public final class SlaughterhouseOuterClass {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ANIMAL_REGISTRATION_NUMBER_FIELD_NUMBER;
-      hash = (53 * hash) + getAnimalRegistrationNumber().hashCode();
+      hash = (53 * hash) + getAnimalRegistrationNumber();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4150,7 +4116,7 @@ public final class SlaughterhouseOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        animalRegistrationNumber_ = "";
+        animalRegistrationNumber_ = 0;
 
         return this;
       }
@@ -4227,9 +4193,8 @@ public final class SlaughterhouseOuterClass {
 
       public Builder mergeFrom(com.protobuf.SlaughterhouseOuterClass.ProductListRequest other) {
         if (other == com.protobuf.SlaughterhouseOuterClass.ProductListRequest.getDefaultInstance()) return this;
-        if (!other.getAnimalRegistrationNumber().isEmpty()) {
-          animalRegistrationNumber_ = other.animalRegistrationNumber_;
-          onChanged();
+        if (other.getAnimalRegistrationNumber() != 0) {
+          setAnimalRegistrationNumber(other.getAnimalRegistrationNumber());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4260,78 +4225,33 @@ public final class SlaughterhouseOuterClass {
         return this;
       }
 
-      private java.lang.Object animalRegistrationNumber_ = "";
+      private int animalRegistrationNumber_ ;
       /**
-       * <code>string animal_registration_number = 1;</code>
+       * <code>int32 animal_registration_number = 1;</code>
        * @return The animalRegistrationNumber.
        */
-      public java.lang.String getAnimalRegistrationNumber() {
-        java.lang.Object ref = animalRegistrationNumber_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          animalRegistrationNumber_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getAnimalRegistrationNumber() {
+        return animalRegistrationNumber_;
       }
       /**
-       * <code>string animal_registration_number = 1;</code>
-       * @return The bytes for animalRegistrationNumber.
-       */
-      public com.google.protobuf.ByteString
-          getAnimalRegistrationNumberBytes() {
-        java.lang.Object ref = animalRegistrationNumber_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          animalRegistrationNumber_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string animal_registration_number = 1;</code>
+       * <code>int32 animal_registration_number = 1;</code>
        * @param value The animalRegistrationNumber to set.
        * @return This builder for chaining.
        */
-      public Builder setAnimalRegistrationNumber(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setAnimalRegistrationNumber(int value) {
+        
         animalRegistrationNumber_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string animal_registration_number = 1;</code>
+       * <code>int32 animal_registration_number = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearAnimalRegistrationNumber() {
         
-        animalRegistrationNumber_ = getDefaultInstance().getAnimalRegistrationNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string animal_registration_number = 1;</code>
-       * @param value The bytes for animalRegistrationNumber to set.
-       * @return This builder for chaining.
-       */
-      public Builder setAnimalRegistrationNumberBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        animalRegistrationNumber_ = value;
+        animalRegistrationNumber_ = 0;
         onChanged();
         return this;
       }
@@ -4415,6 +4335,12 @@ public final class SlaughterhouseOuterClass {
      */
     com.protobuf.SlaughterhouseOuterClass.ProductDtoOrBuilder getProductsOrBuilder(
         int index);
+
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    int getCode();
   }
   /**
    * Protobuf type {@code ProductListResponse}
@@ -4470,6 +4396,11 @@ public final class SlaughterhouseOuterClass {
               }
               products_.add(
                   input.readMessage(com.protobuf.SlaughterhouseOuterClass.ProductDto.parser(), extensionRegistry));
+              break;
+            }
+            case 16: {
+
+              code_ = input.readInt32();
               break;
             }
             default: {
@@ -4549,6 +4480,17 @@ public final class SlaughterhouseOuterClass {
       return products_.get(index);
     }
 
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -4566,6 +4508,9 @@ public final class SlaughterhouseOuterClass {
       for (int i = 0; i < products_.size(); i++) {
         output.writeMessage(1, products_.get(i));
       }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4578,6 +4523,10 @@ public final class SlaughterhouseOuterClass {
       for (int i = 0; i < products_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, products_.get(i));
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4596,6 +4545,8 @@ public final class SlaughterhouseOuterClass {
 
       if (!getProductsList()
           .equals(other.getProductsList())) return false;
+      if (getCode()
+          != other.getCode()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4611,6 +4562,8 @@ public final class SlaughterhouseOuterClass {
         hash = (37 * hash) + PRODUCTS_FIELD_NUMBER;
         hash = (53 * hash) + getProductsList().hashCode();
       }
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4751,6 +4704,8 @@ public final class SlaughterhouseOuterClass {
         } else {
           productsBuilder_.clear();
         }
+        code_ = 0;
+
         return this;
       }
 
@@ -4787,6 +4742,7 @@ public final class SlaughterhouseOuterClass {
         } else {
           result.products_ = productsBuilder_.build();
         }
+        result.code_ = code_;
         onBuilt();
         return result;
       }
@@ -4860,6 +4816,9 @@ public final class SlaughterhouseOuterClass {
               productsBuilder_.addAllMessages(other.products_);
             }
           }
+        }
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5130,6 +5089,37 @@ public final class SlaughterhouseOuterClass {
         }
         return productsBuilder_;
       }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 2;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -5188,16 +5178,10 @@ public final class SlaughterhouseOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string product_id = 1;</code>
+     * <code>int32 product_id = 1;</code>
      * @return The productId.
      */
-    java.lang.String getProductId();
-    /**
-     * <code>string product_id = 1;</code>
-     * @return The bytes for productId.
-     */
-    com.google.protobuf.ByteString
-        getProductIdBytes();
+    int getProductId();
   }
   /**
    * Protobuf type {@code AnimalListRequest}
@@ -5212,7 +5196,6 @@ public final class SlaughterhouseOuterClass {
       super(builder);
     }
     private AnimalListRequest() {
-      productId_ = "";
     }
 
     @java.lang.Override
@@ -5245,10 +5228,9 @@ public final class SlaughterhouseOuterClass {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              productId_ = s;
+              productId_ = input.readInt32();
               break;
             }
             default: {
@@ -5286,41 +5268,14 @@ public final class SlaughterhouseOuterClass {
     }
 
     public static final int PRODUCT_ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object productId_;
+    private int productId_;
     /**
-     * <code>string product_id = 1;</code>
+     * <code>int32 product_id = 1;</code>
      * @return The productId.
      */
     @java.lang.Override
-    public java.lang.String getProductId() {
-      java.lang.Object ref = productId_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        productId_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string product_id = 1;</code>
-     * @return The bytes for productId.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getProductIdBytes() {
-      java.lang.Object ref = productId_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        productId_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getProductId() {
+      return productId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5337,8 +5292,8 @@ public final class SlaughterhouseOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productId_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, productId_);
+      if (productId_ != 0) {
+        output.writeInt32(1, productId_);
       }
       unknownFields.writeTo(output);
     }
@@ -5349,8 +5304,9 @@ public final class SlaughterhouseOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(productId_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, productId_);
+      if (productId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, productId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5367,8 +5323,8 @@ public final class SlaughterhouseOuterClass {
       }
       com.protobuf.SlaughterhouseOuterClass.AnimalListRequest other = (com.protobuf.SlaughterhouseOuterClass.AnimalListRequest) obj;
 
-      if (!getProductId()
-          .equals(other.getProductId())) return false;
+      if (getProductId()
+          != other.getProductId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5381,7 +5337,7 @@ public final class SlaughterhouseOuterClass {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + PRODUCT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getProductId().hashCode();
+      hash = (53 * hash) + getProductId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5515,7 +5471,7 @@ public final class SlaughterhouseOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        productId_ = "";
+        productId_ = 0;
 
         return this;
       }
@@ -5592,9 +5548,8 @@ public final class SlaughterhouseOuterClass {
 
       public Builder mergeFrom(com.protobuf.SlaughterhouseOuterClass.AnimalListRequest other) {
         if (other == com.protobuf.SlaughterhouseOuterClass.AnimalListRequest.getDefaultInstance()) return this;
-        if (!other.getProductId().isEmpty()) {
-          productId_ = other.productId_;
-          onChanged();
+        if (other.getProductId() != 0) {
+          setProductId(other.getProductId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5625,78 +5580,33 @@ public final class SlaughterhouseOuterClass {
         return this;
       }
 
-      private java.lang.Object productId_ = "";
+      private int productId_ ;
       /**
-       * <code>string product_id = 1;</code>
+       * <code>int32 product_id = 1;</code>
        * @return The productId.
        */
-      public java.lang.String getProductId() {
-        java.lang.Object ref = productId_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          productId_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      @java.lang.Override
+      public int getProductId() {
+        return productId_;
       }
       /**
-       * <code>string product_id = 1;</code>
-       * @return The bytes for productId.
-       */
-      public com.google.protobuf.ByteString
-          getProductIdBytes() {
-        java.lang.Object ref = productId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          productId_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string product_id = 1;</code>
+       * <code>int32 product_id = 1;</code>
        * @param value The productId to set.
        * @return This builder for chaining.
        */
-      public Builder setProductId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setProductId(int value) {
+        
         productId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string product_id = 1;</code>
+       * <code>int32 product_id = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearProductId() {
         
-        productId_ = getDefaultInstance().getProductId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string product_id = 1;</code>
-       * @param value The bytes for productId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setProductIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        productId_ = value;
+        productId_ = 0;
         onChanged();
         return this;
       }
@@ -5773,6 +5683,12 @@ public final class SlaughterhouseOuterClass {
      * @return The regNum at the given index.
      */
     int getRegNum(int index);
+
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    int getCode();
   }
   /**
    * Protobuf type {@code AnimalListResponse}
@@ -5842,6 +5758,11 @@ public final class SlaughterhouseOuterClass {
               input.popLimit(limit);
               break;
             }
+            case 16: {
+
+              code_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -5907,6 +5828,17 @@ public final class SlaughterhouseOuterClass {
     }
     private int regNumMemoizedSerializedSize = -1;
 
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5928,6 +5860,9 @@ public final class SlaughterhouseOuterClass {
       }
       for (int i = 0; i < regNum_.size(); i++) {
         output.writeInt32NoTag(regNum_.getInt(i));
+      }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
       }
       unknownFields.writeTo(output);
     }
@@ -5952,6 +5887,10 @@ public final class SlaughterhouseOuterClass {
         }
         regNumMemoizedSerializedSize = dataSize;
       }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5969,6 +5908,8 @@ public final class SlaughterhouseOuterClass {
 
       if (!getRegNumList()
           .equals(other.getRegNumList())) return false;
+      if (getCode()
+          != other.getCode()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5984,6 +5925,8 @@ public final class SlaughterhouseOuterClass {
         hash = (37 * hash) + REGNUM_FIELD_NUMBER;
         hash = (53 * hash) + getRegNumList().hashCode();
       }
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6119,6 +6062,8 @@ public final class SlaughterhouseOuterClass {
         super.clear();
         regNum_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
+        code_ = 0;
+
         return this;
       }
 
@@ -6151,6 +6096,7 @@ public final class SlaughterhouseOuterClass {
           bitField0_ = (bitField0_ & ~0x00000001);
         }
         result.regNum_ = regNum_;
+        result.code_ = code_;
         onBuilt();
         return result;
       }
@@ -6208,6 +6154,9 @@ public final class SlaughterhouseOuterClass {
             regNum_.addAll(other.regNum_);
           }
           onChanged();
+        }
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6314,6 +6263,37 @@ public final class SlaughterhouseOuterClass {
       public Builder clearRegNum() {
         regNum_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 2;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
         onChanged();
         return this;
       }
@@ -6432,15 +6412,16 @@ public final class SlaughterhouseOuterClass {
       "\n\005parts\030\002 \003(\0132\013.AnimalPart\"+\n\007Product\022\n\n" +
       "\002id\030\001 \001(\005\022\024\n\005trays\030\002 \003(\0132\005.Tray\"\030\n\nProdu" +
       "ctDto\022\n\n\002id\030\001 \001(\005\"8\n\022ProductListRequest\022" +
-      "\"\n\032animal_registration_number\030\001 \001(\t\"4\n\023P" +
+      "\"\n\032animal_registration_number\030\001 \001(\005\"B\n\023P" +
       "roductListResponse\022\035\n\010products\030\001 \003(\0132\013.P" +
-      "roductDto\"\'\n\021AnimalListRequest\022\022\n\nproduc" +
-      "t_id\030\001 \001(\t\"$\n\022AnimalListResponse\022\016\n\006regN" +
-      "um\030\001 \003(\0052\217\001\n\016Slaughterhouse\022@\n\023GetProduc" +
-      "tsByAnimal\022\023.ProductListRequest\032\024.Produc" +
-      "tListResponse\022;\n\020GetAnimalsByTray\022\022.Anim" +
-      "alListRequest\032\023.AnimalListResponseB\016\n\014co" +
-      "m.protobufb\006proto3"
+      "roductDto\022\014\n\004code\030\002 \001(\005\"\'\n\021AnimalListReq" +
+      "uest\022\022\n\nproduct_id\030\001 \001(\005\"2\n\022AnimalListRe" +
+      "sponse\022\016\n\006regNum\030\001 \003(\005\022\014\n\004code\030\002 \001(\0052\222\001\n" +
+      "\016Slaughterhouse\022@\n\023GetProductsByAnimal\022\023" +
+      ".ProductListRequest\032\024.ProductListRespons" +
+      "e\022>\n\023GetAnimalsByProduct\022\022.AnimalListReq" +
+      "uest\032\023.AnimalListResponseB\016\n\014com.protobu" +
+      "fb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6487,7 +6468,7 @@ public final class SlaughterhouseOuterClass {
     internal_static_ProductListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ProductListResponse_descriptor,
-        new java.lang.String[] { "Products", });
+        new java.lang.String[] { "Products", "Code", });
     internal_static_AnimalListRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_AnimalListRequest_fieldAccessorTable = new
@@ -6499,7 +6480,7 @@ public final class SlaughterhouseOuterClass {
     internal_static_AnimalListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AnimalListResponse_descriptor,
-        new java.lang.String[] { "RegNum", });
+        new java.lang.String[] { "RegNum", "Code", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
