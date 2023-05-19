@@ -27,8 +27,8 @@ public class SlaughterhouseService extends SlaughterhouseGrpc.SlaughterhouseImpl
     @Override
     public void getProductsByAnimal(SlaughterhouseOuterClass.ProductListRequest request, StreamObserver<SlaughterhouseOuterClass.ProductListResponse> responseObserver) {
 
-        System.out.println("Received request -> " + request.toString());
-        SlaughterhouseOuterClass.ProductListResponse output = null;
+        System.out.println("Received request for all products from animal -> "+request.getAnimalRegistrationNumber());
+        SlaughterhouseOuterClass.ProductListResponse output;
         try {
             output = dao.getAllProducts(request.getAnimalRegistrationNumber());
         } catch (SQLException e) {
@@ -40,12 +40,54 @@ public class SlaughterhouseService extends SlaughterhouseGrpc.SlaughterhouseImpl
     }
 
     @Override
-    public void getAnimalsByProduct(SlaughterhouseOuterClass.AnimalListRequest request, StreamObserver<SlaughterhouseOuterClass.AnimalListResponse> responseObserver) {
-        System.out.println("Received message -> " + request.toString());
+    public void getAllRegistered(SlaughterhouseOuterClass.emptyMessage request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
+        System.out.println("Received request for all registered animals");
 
-        SlaughterhouseOuterClass.AnimalListResponse output = null;
+        SlaughterhouseOuterClass.AllAnimalsMessage animals;
         try {
-            output = dao.getAllRegNumber(request.getProductId());
+            animals = dao.getAllAnimals();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(animals);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getByRegNum(SlaughterhouseOuterClass.RegNum request, StreamObserver<SlaughterhouseOuterClass.Animal> responseObserver) {
+        System.out.println("Received request for animals -> " + request.getRegNum());
+
+        SlaughterhouseOuterClass.Animal animals;
+        try {
+            animals = dao.getByRegNum(request.getRegNum());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(animals);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getByDate(SlaughterhouseOuterClass.Date request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
+        System.out.println("Received request for all animals registered on -> " + request.getDate());
+
+        SlaughterhouseOuterClass.AllAnimalsMessage animals;
+        try {
+            animals = dao.getAllByDate(request.getDate());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(animals);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getByProductId(SlaughterhouseOuterClass.ProductId request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
+        System.out.println("Received request for all animals in product -> " + request.getProductId());
+
+        SlaughterhouseOuterClass.AllAnimalsMessage output;
+        try {
+            output = dao.getAllByProduct(request.getProductId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,37 +97,58 @@ public class SlaughterhouseService extends SlaughterhouseGrpc.SlaughterhouseImpl
     }
 
     @Override
-    public void getAllRegistered(SlaughterhouseOuterClass.emptyMessage request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
-        super.getAllRegistered(request, responseObserver);
-    }
-
-    @Override
-    public void getByRegNum(SlaughterhouseOuterClass.RegNum request, StreamObserver<SlaughterhouseOuterClass.Animal> responseObserver) {
-        super.getByRegNum(request, responseObserver);
-    }
-
-    @Override
-    public void getByProductId(SlaughterhouseOuterClass.ProductId request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
-        super.getByProductId(request, responseObserver);
-    }
-
-    @Override
     public void getByOrigin(SlaughterhouseOuterClass.Farm request, StreamObserver<SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
-        super.getByOrigin(request, responseObserver);
+        System.out.println("Received request for all animals with origin -> " + request.getFarm());
+
+        SlaughterhouseOuterClass.AllAnimalsMessage animals;
+        try {
+            animals = dao.getAllByOrigin(request.getFarm());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(animals);
+        responseObserver.onCompleted();
     }
 
     @Override
     public void add(SlaughterhouseOuterClass.Animal request, StreamObserver<SlaughterhouseOuterClass.boolResponse> responseObserver) {
-        super.add(request, responseObserver);
+        System.out.println("Received request to add animal");
+
+        SlaughterhouseOuterClass.boolResponse response;
+        try {
+            response = dao.createAnimal(request.getRegistrationDate(), request.getWeight(), request.getOrigin());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 
     @Override
     public void change(SlaughterhouseOuterClass.Animal request, StreamObserver<SlaughterhouseOuterClass.boolResponse> responseObserver) {
-        super.change(request, responseObserver);
+        System.out.println("Received request to update animal -> " + request.getRegistrationNumber());
+
+        SlaughterhouseOuterClass.boolResponse response;
+        try {
+            response = dao.changeAnimal(request.getRegistrationNumber(), request.getRegistrationDate(), request.getWeight(), request.getOrigin());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 
     @Override
     public void remove(SlaughterhouseOuterClass.RegNum request, StreamObserver<SlaughterhouseOuterClass.boolResponse> responseObserver) {
-        super.remove(request, responseObserver);
+        System.out.println("Received request to remove animal -> " + request.getRegNum());
+
+        SlaughterhouseOuterClass.boolResponse response;
+        try {
+            response = dao.removeAnimal(request.getRegNum());
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 }

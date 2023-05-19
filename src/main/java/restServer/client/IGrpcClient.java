@@ -18,11 +18,11 @@ public interface IGrpcClient {
 
     Optional<List<Animal>> getByOrigin(String farm);
 
+    Optional<List<ProductDto>> getProductsByAnimalId(int animalId);
+
     boolean remove(int regNum);
 
     boolean add(Animal animal);
-
-    Optional<List<ProductDto>> getProductsByAnimalId(int animalId);
 
     boolean change(Animal animal);
 }

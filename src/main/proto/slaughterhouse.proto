@@ -4,11 +4,10 @@ option java_package = "protobuf";
 
 service Slaughterhouse { //That is the API
   rpc GetProductsByAnimal(ProductListRequest) returns (ProductListResponse);
-  rpc GetAnimalsByProduct(AnimalListRequest) returns (AnimalListResponse);
+  rpc GetByProductId(ProductId) returns (AllAnimalsMessage);
   rpc GetAllRegistered(emptyMessage) returns (AllAnimalsMessage);
   rpc GetByDate(Date)  returns (AllAnimalsMessage);
   rpc GetByRegNum(RegNum) returns (Animal);
-  rpc GetByProductId(ProductId) returns (AllAnimalsMessage);
   rpc GetByOrigin(Farm) returns (AllAnimalsMessage);
   rpc Add(Animal) returns (boolResponse);
   rpc Change(Animal) returns (boolResponse);
@@ -71,14 +70,5 @@ message ProductListRequest {
 
 message ProductListResponse {
   repeated ProductDto products = 1;
-  int32 code = 2;
-}
-
-message AnimalListRequest {
-  int32 product_id = 1;
-}
-
-message AnimalListResponse {
-  repeated int32 regNum = 1;
   int32 code = 2;
 }

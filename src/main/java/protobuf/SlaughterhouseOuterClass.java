@@ -10353,19 +10353,17 @@ public final class SlaughterhouseOuterClass {
       "oducts\030\001 \003(\0132\013.ProductDto\022\014\n\004code\030\002 \001(\005\"" +
       "\'\n\021AnimalListRequest\022\022\n\nproduct_id\030\001 \001(\005" +
       "\"2\n\022AnimalListResponse\022\016\n\006regNum\030\001 \003(\005\022\014" +
-      "\n\004code\030\002 \001(\0052\321\003\n\016Slaughterhouse\022@\n\023GetPr" +
+      "\n\004code\030\002 \001(\0052\221\003\n\016Slaughterhouse\022@\n\023GetPr" +
       "oductsByAnimal\022\023.ProductListRequest\032\024.Pr" +
-      "oductListResponse\022>\n\023GetAnimalsByProduct" +
-      "\022\022.AnimalListRequest\032\023.AnimalListRespons" +
-      "e\0225\n\020GetAllRegistered\022\r.emptyMessage\032\022.A" +
-      "llAnimalsMessage\022&\n\tGetByDate\022\005.Date\032\022.A" +
-      "llAnimalsMessage\022\037\n\013GetByRegNum\022\007.RegNum" +
-      "\032\007.Animal\0220\n\016GetByProductId\022\n.ProductId\032" +
-      "\022.AllAnimalsMessage\022(\n\013GetByOrigin\022\005.Far" +
-      "m\032\022.AllAnimalsMessage\022\035\n\003Add\022\007.Animal\032\r." +
-      "boolResponse\022 \n\006Change\022\007.Animal\032\r.boolRe" +
-      "sponse\022 \n\006Remove\022\007.RegNum\032\r.boolResponse" +
-      "B\n\n\010protobufb\006proto3"
+      "oductListResponse\0220\n\016GetByProductId\022\n.Pr" +
+      "oductId\032\022.AllAnimalsMessage\0225\n\020GetAllReg" +
+      "istered\022\r.emptyMessage\032\022.AllAnimalsMessa" +
+      "ge\022&\n\tGetByDate\022\005.Date\032\022.AllAnimalsMessa" +
+      "ge\022\037\n\013GetByRegNum\022\007.RegNum\032\007.Animal\022(\n\013G" +
+      "etByOrigin\022\005.Farm\032\022.AllAnimalsMessage\022\035\n" +
+      "\003Add\022\007.Animal\032\r.boolResponse\022 \n\006Change\022\007" +
+      ".Animal\032\r.boolResponse\022 \n\006Remove\022\007.RegNu" +
+      "m\032\r.boolResponseB\n\n\010protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

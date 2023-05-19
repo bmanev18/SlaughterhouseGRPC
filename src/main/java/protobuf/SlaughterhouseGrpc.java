@@ -48,35 +48,35 @@ public final class SlaughterhouseGrpc {
     return getGetProductsByAnimalMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.AnimalListRequest,
-      protobuf.SlaughterhouseOuterClass.AnimalListResponse> getGetAnimalsByProductMethod;
+  private static volatile io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId,
+      protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetAnimalsByProduct",
-      requestType = protobuf.SlaughterhouseOuterClass.AnimalListRequest.class,
-      responseType = protobuf.SlaughterhouseOuterClass.AnimalListResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetByProductId",
+      requestType = protobuf.SlaughterhouseOuterClass.ProductId.class,
+      responseType = protobuf.SlaughterhouseOuterClass.AllAnimalsMessage.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.AnimalListRequest,
-      protobuf.SlaughterhouseOuterClass.AnimalListResponse> getGetAnimalsByProductMethod() {
-    io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.AnimalListRequest, protobuf.SlaughterhouseOuterClass.AnimalListResponse> getGetAnimalsByProductMethod;
-    if ((getGetAnimalsByProductMethod = SlaughterhouseGrpc.getGetAnimalsByProductMethod) == null) {
+  public static io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId,
+      protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod() {
+    io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId, protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod;
+    if ((getGetByProductIdMethod = SlaughterhouseGrpc.getGetByProductIdMethod) == null) {
       synchronized (SlaughterhouseGrpc.class) {
-        if ((getGetAnimalsByProductMethod = SlaughterhouseGrpc.getGetAnimalsByProductMethod) == null) {
-          SlaughterhouseGrpc.getGetAnimalsByProductMethod = getGetAnimalsByProductMethod =
-              io.grpc.MethodDescriptor.<protobuf.SlaughterhouseOuterClass.AnimalListRequest, protobuf.SlaughterhouseOuterClass.AnimalListResponse>newBuilder()
+        if ((getGetByProductIdMethod = SlaughterhouseGrpc.getGetByProductIdMethod) == null) {
+          SlaughterhouseGrpc.getGetByProductIdMethod = getGetByProductIdMethod =
+              io.grpc.MethodDescriptor.<protobuf.SlaughterhouseOuterClass.ProductId, protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAnimalsByProduct"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetByProductId"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protobuf.SlaughterhouseOuterClass.AnimalListRequest.getDefaultInstance()))
+                  protobuf.SlaughterhouseOuterClass.ProductId.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protobuf.SlaughterhouseOuterClass.AnimalListResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new SlaughterhouseMethodDescriptorSupplier("GetAnimalsByProduct"))
+                  protobuf.SlaughterhouseOuterClass.AllAnimalsMessage.getDefaultInstance()))
+              .setSchemaDescriptor(new SlaughterhouseMethodDescriptorSupplier("GetByProductId"))
               .build();
         }
       }
     }
-    return getGetAnimalsByProductMethod;
+    return getGetByProductIdMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.emptyMessage,
@@ -170,37 +170,6 @@ public final class SlaughterhouseGrpc {
       }
     }
     return getGetByRegNumMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId,
-      protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetByProductId",
-      requestType = protobuf.SlaughterhouseOuterClass.ProductId.class,
-      responseType = protobuf.SlaughterhouseOuterClass.AllAnimalsMessage.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId,
-      protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod() {
-    io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.ProductId, protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getGetByProductIdMethod;
-    if ((getGetByProductIdMethod = SlaughterhouseGrpc.getGetByProductIdMethod) == null) {
-      synchronized (SlaughterhouseGrpc.class) {
-        if ((getGetByProductIdMethod = SlaughterhouseGrpc.getGetByProductIdMethod) == null) {
-          SlaughterhouseGrpc.getGetByProductIdMethod = getGetByProductIdMethod =
-              io.grpc.MethodDescriptor.<protobuf.SlaughterhouseOuterClass.ProductId, protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetByProductId"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protobuf.SlaughterhouseOuterClass.ProductId.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  protobuf.SlaughterhouseOuterClass.AllAnimalsMessage.getDefaultInstance()))
-              .setSchemaDescriptor(new SlaughterhouseMethodDescriptorSupplier("GetByProductId"))
-              .build();
-        }
-      }
-    }
-    return getGetByProductIdMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<protobuf.SlaughterhouseOuterClass.Farm,
@@ -387,9 +356,9 @@ public final class SlaughterhouseGrpc {
 
     /**
      */
-    public void getAnimalsByProduct(protobuf.SlaughterhouseOuterClass.AnimalListRequest request,
-        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AnimalListResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAnimalsByProductMethod(), responseObserver);
+    public void getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request,
+        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetByProductIdMethod(), responseObserver);
     }
 
     /**
@@ -411,13 +380,6 @@ public final class SlaughterhouseGrpc {
     public void getByRegNum(protobuf.SlaughterhouseOuterClass.RegNum request,
         io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.Animal> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetByRegNumMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetByProductIdMethod(), responseObserver);
     }
 
     /**
@@ -458,12 +420,12 @@ public final class SlaughterhouseGrpc {
                 protobuf.SlaughterhouseOuterClass.ProductListResponse>(
                   this, METHODID_GET_PRODUCTS_BY_ANIMAL)))
           .addMethod(
-            getGetAnimalsByProductMethod(),
+            getGetByProductIdMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
-                protobuf.SlaughterhouseOuterClass.AnimalListRequest,
-                protobuf.SlaughterhouseOuterClass.AnimalListResponse>(
-                  this, METHODID_GET_ANIMALS_BY_PRODUCT)))
+                protobuf.SlaughterhouseOuterClass.ProductId,
+                protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>(
+                  this, METHODID_GET_BY_PRODUCT_ID)))
           .addMethod(
             getGetAllRegisteredMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -485,13 +447,6 @@ public final class SlaughterhouseGrpc {
                 protobuf.SlaughterhouseOuterClass.RegNum,
                 protobuf.SlaughterhouseOuterClass.Animal>(
                   this, METHODID_GET_BY_REG_NUM)))
-          .addMethod(
-            getGetByProductIdMethod(),
-            io.grpc.stub.ServerCalls.asyncUnaryCall(
-              new MethodHandlers<
-                protobuf.SlaughterhouseOuterClass.ProductId,
-                protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>(
-                  this, METHODID_GET_BY_PRODUCT_ID)))
           .addMethod(
             getGetByOriginMethod(),
             io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -551,10 +506,10 @@ public final class SlaughterhouseGrpc {
 
     /**
      */
-    public void getAnimalsByProduct(protobuf.SlaughterhouseOuterClass.AnimalListRequest request,
-        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AnimalListResponse> responseObserver) {
+    public void getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request,
+        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetAnimalsByProductMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetByProductIdMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -579,14 +534,6 @@ public final class SlaughterhouseGrpc {
         io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.Animal> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetByRegNumMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request,
-        io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetByProductIdMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -648,9 +595,9 @@ public final class SlaughterhouseGrpc {
 
     /**
      */
-    public protobuf.SlaughterhouseOuterClass.AnimalListResponse getAnimalsByProduct(protobuf.SlaughterhouseOuterClass.AnimalListRequest request) {
+    public protobuf.SlaughterhouseOuterClass.AllAnimalsMessage getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetAnimalsByProductMethod(), getCallOptions(), request);
+          getChannel(), getGetByProductIdMethod(), getCallOptions(), request);
     }
 
     /**
@@ -672,13 +619,6 @@ public final class SlaughterhouseGrpc {
     public protobuf.SlaughterhouseOuterClass.Animal getByRegNum(protobuf.SlaughterhouseOuterClass.RegNum request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetByRegNumMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public protobuf.SlaughterhouseOuterClass.AllAnimalsMessage getByProductId(protobuf.SlaughterhouseOuterClass.ProductId request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetByProductIdMethod(), getCallOptions(), request);
     }
 
     /**
@@ -737,10 +677,10 @@ public final class SlaughterhouseGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<protobuf.SlaughterhouseOuterClass.AnimalListResponse> getAnimalsByProduct(
-        protobuf.SlaughterhouseOuterClass.AnimalListRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getByProductId(
+        protobuf.SlaughterhouseOuterClass.ProductId request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetAnimalsByProductMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetByProductIdMethod(), getCallOptions()), request);
     }
 
     /**
@@ -765,14 +705,6 @@ public final class SlaughterhouseGrpc {
         protobuf.SlaughterhouseOuterClass.RegNum request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetByRegNumMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage> getByProductId(
-        protobuf.SlaughterhouseOuterClass.ProductId request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetByProductIdMethod(), getCallOptions()), request);
     }
 
     /**
@@ -809,15 +741,14 @@ public final class SlaughterhouseGrpc {
   }
 
   private static final int METHODID_GET_PRODUCTS_BY_ANIMAL = 0;
-  private static final int METHODID_GET_ANIMALS_BY_PRODUCT = 1;
+  private static final int METHODID_GET_BY_PRODUCT_ID = 1;
   private static final int METHODID_GET_ALL_REGISTERED = 2;
   private static final int METHODID_GET_BY_DATE = 3;
   private static final int METHODID_GET_BY_REG_NUM = 4;
-  private static final int METHODID_GET_BY_PRODUCT_ID = 5;
-  private static final int METHODID_GET_BY_ORIGIN = 6;
-  private static final int METHODID_ADD = 7;
-  private static final int METHODID_CHANGE = 8;
-  private static final int METHODID_REMOVE = 9;
+  private static final int METHODID_GET_BY_ORIGIN = 5;
+  private static final int METHODID_ADD = 6;
+  private static final int METHODID_CHANGE = 7;
+  private static final int METHODID_REMOVE = 8;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -840,9 +771,9 @@ public final class SlaughterhouseGrpc {
           serviceImpl.getProductsByAnimal((protobuf.SlaughterhouseOuterClass.ProductListRequest) request,
               (io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.ProductListResponse>) responseObserver);
           break;
-        case METHODID_GET_ANIMALS_BY_PRODUCT:
-          serviceImpl.getAnimalsByProduct((protobuf.SlaughterhouseOuterClass.AnimalListRequest) request,
-              (io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AnimalListResponse>) responseObserver);
+        case METHODID_GET_BY_PRODUCT_ID:
+          serviceImpl.getByProductId((protobuf.SlaughterhouseOuterClass.ProductId) request,
+              (io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>) responseObserver);
           break;
         case METHODID_GET_ALL_REGISTERED:
           serviceImpl.getAllRegistered((protobuf.SlaughterhouseOuterClass.emptyMessage) request,
@@ -855,10 +786,6 @@ public final class SlaughterhouseGrpc {
         case METHODID_GET_BY_REG_NUM:
           serviceImpl.getByRegNum((protobuf.SlaughterhouseOuterClass.RegNum) request,
               (io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.Animal>) responseObserver);
-          break;
-        case METHODID_GET_BY_PRODUCT_ID:
-          serviceImpl.getByProductId((protobuf.SlaughterhouseOuterClass.ProductId) request,
-              (io.grpc.stub.StreamObserver<protobuf.SlaughterhouseOuterClass.AllAnimalsMessage>) responseObserver);
           break;
         case METHODID_GET_BY_ORIGIN:
           serviceImpl.getByOrigin((protobuf.SlaughterhouseOuterClass.Farm) request,
@@ -938,11 +865,10 @@ public final class SlaughterhouseGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SlaughterhouseFileDescriptorSupplier())
               .addMethod(getGetProductsByAnimalMethod())
-              .addMethod(getGetAnimalsByProductMethod())
+              .addMethod(getGetByProductIdMethod())
               .addMethod(getGetAllRegisteredMethod())
               .addMethod(getGetByDateMethod())
               .addMethod(getGetByRegNumMethod())
-              .addMethod(getGetByProductIdMethod())
               .addMethod(getGetByOriginMethod())
               .addMethod(getAddMethod())
               .addMethod(getChangeMethod())
