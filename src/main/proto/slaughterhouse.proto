@@ -1,17 +1,49 @@
 syntax = "proto3";
 
-option java_package = "com.protobuf";
+option java_package = "protobuf";
 
 service Slaughterhouse { //That is the API
   rpc GetProductsByAnimal(ProductListRequest) returns (ProductListResponse);
   rpc GetAnimalsByProduct(AnimalListRequest) returns (AnimalListResponse);
+  rpc GetAllRegistered(emptyMessage) returns (AllAnimalsMessage);
+  rpc GetByDate(Date)  returns (AllAnimalsMessage);
+  rpc GetByRegNum(RegNum) returns (Animal);
+  rpc GetByProductId(ProductId) returns (AllAnimalsMessage);
+  rpc GetByOrigin(Farm) returns (AllAnimalsMessage);
+  rpc Add(Animal) returns (boolResponse);
+  rpc Change(Animal) returns (boolResponse);
+  rpc Remove(RegNum) returns (boolResponse);
 }
 
 message Animal {
   string registrationDate = 1;
-  string registration_number = 2;
+  int32 registration_number = 2;
   double weight = 3;
   string origin = 4;
+}
+message emptyMessage{
+  string string1 = 1;
+}
+
+message Date{
+  string date = 1;
+}
+
+message boolResponse{
+  bool boolBABY = 1;
+}
+message RegNum{
+  int32 RegNum = 1;
+}
+message ProductId{
+  int32 productId = 1;
+}
+
+message Farm{
+  string farm = 1;
+}
+message AllAnimalsMessage{
+  repeated Animal animals = 1;
 }
 
 message AnimalPart {

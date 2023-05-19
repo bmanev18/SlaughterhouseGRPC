@@ -1,6 +1,6 @@
-package com.database;
+package grpcServer.database;
 
-import com.protobuf.SlaughterhouseOuterClass;
+import protobuf.SlaughterhouseOuterClass;
 
 import java.sql.SQLException;
 import java.time.LocalDate;

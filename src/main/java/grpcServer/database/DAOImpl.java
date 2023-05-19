@@ -1,11 +1,9 @@
-package com.database;
+package grpcServer.database;
 
-import com.protobuf.SlaughterhouseOuterClass;
+import protobuf.SlaughterhouseOuterClass;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DAOImpl implements DAO {
 

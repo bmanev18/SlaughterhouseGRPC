@@ -1,4 +1,4 @@
-package com.example.slaughterhousegrpc.model;
+package shared.model;
 
 import java.time.LocalDate;
 
